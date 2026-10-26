@@ -37,7 +37,8 @@ A clean, responsive expense tracker built with HTML, CSS, and vanilla JavaScript
 SpendWise/
 ├── index.html
 ├── style.css
-└── script.js
+├── script.js
+└── README.md
 ```
 
 ## 🔮 Future Improvements
