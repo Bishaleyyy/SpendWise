@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SpendWise – Personal Expense Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-name">SpendWise</span>
+      </div>
+      <button type="button" class="btn btn-primary" id="add-shortcut">+ Add transaction</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Summary cards -->
+    <section class="summary" aria-label="Financial summary">
+      <article class="card card-balance">
+        <h2 class="card-label">Total Balance</h2>
+        <p class="card-value" id="summary-balance">Rs. 0.00</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Total Income</h2>
+        <p class="card-value text-income" id="summary-income">Rs. 0.00</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Total Expenses</h2>
+        <p class="card-value text-expense" id="summary-expenses">Rs. 0.00</p>
+      </article>
+      <article class="card">
+        <h2 class="card-label">Transactions</h2>
+        <p class="card-value" id="summary-count">0</p>
+      </article>
+    </section>
+
+    <div class="layout">
+
+      <!-- Add transaction form -->
+      <section class="panel" aria-labelledby="form-title">
+        <h2 class="panel-title" id="form-title">New transaction</h2>
+
+        <form id="transaction-form" novalidate>
+          <div class="field">
+            <label for="title">Description</label>
+            <input type="text" id="title" placeholder="e.g. Groceries" maxlength="60">
+            <p class="error" id="title-error"></p>
+          </div>
+
+          <div class="field">
+            <label for="amount">Amount (Rs.)</label>
+            <input type="number" id="amount" placeholder="0.00" step="0.01" min="0" inputmode="decimal">
+            <p class="error" id="amount-error"></p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="type">Type</label>
+              <select id="type">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="category">Category</label>
+              <select id="category"></select>
+              <p class="error" id="category-error"></p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="date">Date</label>
+            <input type="date" id="date">
+            <p class="error" id="date-error"></p>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block">Add transaction</button>
+          <p class="form-message" id="form-message" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <!-- Transaction history -->
+      <section class="panel" aria-labelledby="history-title">
+        <h2 class="panel-title" id="history-title">Transaction history</h2>
+
+        <ul class="transaction-list" id="transaction-list"></ul>
+
+        <div class="empty-state" id="empty-state" hidden>
+          <p class="empty-title">No transactions yet</p>
+          <p class="empty-text">Add your first income or expense using the form.</p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">SpendWise · Data is saved only in this browser.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
